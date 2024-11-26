@@ -1,0 +1,144 @@
+/* Hide default cursor */
+::selection{
+  background-color: rgb(255, 213, 213);
+}
+body {
+  display: flex; 
+  flex-wrap: wrap;
+  cursor:pointer;
+  background-color: #f0f5f5;
+  font-family: "Ploni ML v2 AAA test", sans-serif;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+.bird {
+  width: 130px;
+  z-index: 10; /* Adjusted to a more reasonable value */
+  transform: translate(1rem, 9.5rem);
+}
+.bird{
+@media (max-width: 768px) { 
+transform: translate(-2rem, 13.3rem);
+width: 110px;
+}}
+
+p{
+  color: #4c4c4c;
+}
+
+h1 {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 700;
+  font-weight: 100;
+  margin-bottom: 6rem;
+}
+h1{
+@media (max-width: 768px) {
+  margin-bottom: 10rem;
+}
+}
+
+h3 {
+  font-family: "Ploni ML v2 AAA test", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  font-weight: 700;
+}
+.question {
+  flex: 1;
+  font-weight: 500;
+  font-size: 18px;
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  letter-spacing: 0.3px; 
+  line-height: 24px;
+  width: 75vw;
+  max-width: 820px;
+  padding-left: 16;
+
+
+}
+
+
+.q-a-dropdown.space-between.split{
+  display: flex; /* Make the container a flexbox */
+  flex-direction: column;
+  align-items: self-end;
+  gap: 1rem;
+
+}
+.card::before{
+ height: 70px;
+  color: #4c4c4c;}
+
+.card::after{
+  height: fit-content;
+}
+.card { 
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 12px 28px 10px 24px;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 18px;
+
+
+}
+.card:hover{
+  p{color: #000000;}
+  box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
+}
+
+
+
+.other-questions {
+  display: flex;
+  flex-direction: row-reverse;
+  direction: rtl;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+}
+
+section.qa-section-v2 .q-a-dropdown.space-between.split:before {
+  position: absolute;
+  right: -15rem;
+  top: 0;
+  content: "";
+  background-image: url(../img/bird.png);
+  width: 162px;
+  height: 136px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* Style for custom cursor */
+
+
+#custom-cursor {
+  position: absolute;
+  pointer-events: none; /* Ensure cursor doesn't interfere with mouse events */
+  z-index: 9999; /* Ensure cursor is on top of other elements */
+}
+#custom-cursor {
+  @media (max-width: 1920px) { 
+    #custom-cursor {
+      width: 40%; /* Adjust width for smaller screens */
+      height: 50%; /* Adjust height for smaller screens */
+    }
+}}
+@media (max-width: 768px) { 
+  #custom-cursor {
+    width: 80%; /* Adjust width for smaller screens */
+    height: 70%; /* Adjust height for smaller screens */
+  }
+}
