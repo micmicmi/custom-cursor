@@ -50,7 +50,7 @@ h3 {
 }
 .question {
   flex: 1;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 18px;
   direction: rtl;
   display: flex;
@@ -61,7 +61,6 @@ h3 {
   width: 75vw;
   max-width: 820px;
   padding-left: 16;
-  letter-spacing: 0.3px;
 }
 
 
