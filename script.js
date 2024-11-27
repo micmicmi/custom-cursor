@@ -33,3 +33,14 @@ document.addEventListener('click', () => {
     // Play the animation when the mouse is clicked
     animation.play();
 });
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+    const plusMinusIcon = card.querySelector('.plus-minus');
+    const answer = card.querySelector('.answer');
+
+    plusMinusIcon.addEventListener('click', () => {
+        card.classList.toggle('active');
+        plusMinusIcon.classList.toggle('rotated');
+    });
+});
