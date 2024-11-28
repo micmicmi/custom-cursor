@@ -118,26 +118,10 @@ li {
 .card1 {
   display: flex;
   flex-direction: column;
-  padding: 14px 24px 14px 24px; /* Adjust padding as needed */
+  padding: 14px 32px 14px 32px; /* Adjust padding as needed */
   background-color: rgb(255, 255, 255);
   border-radius: 18px;
   max-height: fit-content;
-}
-
-@media (max-width: 768px) { 
-.card1 {
-  flex: none;
-  border-radius: 16px;
-  justify-content: center;
-  gap: 1rem;
-  max-height: 70px;
-  overflow: hidden;
-  overflow: none; /* Allow vertical scrolling for content exceeding 70px */
-  }
-  .card1.active {
-  max-height: none; /* Allow the card to expand */
-  overflow: none; /* Allow scrolling if content exceeds height */
-  }
 }
 
 
@@ -152,13 +136,9 @@ li {
 box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
   .question {
       font-weight: 600; /* Changed to 800 for bold */
-      letter-spacing: 0.2px;
-    }
-    .answer{
-      color: #4c4c4c;
-      letter-spacing: 0.2px;
-    }
-}
+      letter-spacing: 0.2px;}
+ }
+
 
 .q1{
   display: flex;
@@ -169,12 +149,6 @@ box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
   padding: 0;
 }
 
-@media (max-width: 768px) { 
-.question{
-
-}
-}
-
 
 .card1.active .answer {
   height: auto;
@@ -182,7 +156,8 @@ box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
   overflow: hidden;
   max-height: fit-content; /* Maintain max-height transition */
   transition: max-height 0.6s ease-out; /* Only max-height transition */
-  padding:  0 1rem;
+  color: #4c4c4c;
+  letter-spacing: 0.2px;
 }
 
 .answer {
@@ -226,9 +201,6 @@ box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
 }
 
 
-
-
-
 .other-questions {
   display: flex;
   flex-direction: row-reverse;
@@ -240,7 +212,27 @@ box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
 }
 
 
+/* media-queries */
 
+@media (max-width: 768px) { 
+  .card1 {
+    flex: none;
+    border-radius: 16px;
+    justify-content: center;
+    gap: 1rem;
+    max-height: 70px;
+    overflow: hidden;
+    overflow: none; /* Allow vertical scrolling for content exceeding 70px */
+    }
+  .card1.active {
+    max-height: none; /* Allow the card to expand */
+    overflow: none; /* Allow scrolling if content exceeds height */
+    }
+  .card1.active .answer {
+    padding: 0rem 0rem;
+   }
+  }
+  
 /* Style for custom cursor */
 
 
