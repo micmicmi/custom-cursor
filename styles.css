@@ -1,12 +1,17 @@
 /* Hide default cursor */
+.link{
+  color: #FF1D00;
+  text-decoration: none;
+  font-weight: 600;
 
+}
 ::selection{
   background-color: rgb(255, 213, 213);
 }
 body {
   display: flex;
   flex-direction: column;
-  cursor:pointer;
+  cursor:auto;
   background-color: #f0f5f5;
   font-family: "Ploni ML v2 AAA test", sans-serif;
   caret-color: transparent; 
@@ -15,11 +20,8 @@ body {
   margin: 0;
   padding: 0;
 }
-@media (max-width: 768px) {
-  body{
-    overflow: hidden; ;
-  }
-}
+
+
 
 .bird {
   position: relative;
@@ -29,8 +31,8 @@ body {
 }
 .bird{
 @media (max-width: 768px) { 
-transform: translate(0rem, 13.3rem);
 width: 110px;
+transform: translate(-3rem, 13.5rem);
 }}
 
 p{
@@ -57,7 +59,8 @@ h3 {
   font-weight: 700;
 }
 .question {
-  width: 100vw;
+  font-family: "Ploni ML v2 AAA test", sans-serif;
+  width: 100%;
   display: flex;
   flex-direction: column;
   max-width: 820px;
@@ -66,13 +69,19 @@ h3 {
   direction: rtl;
   letter-spacing: 0.3px; 
   line-height: 24px;
+
+}
+.insurance-question {
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.3px; 
+  line-height: 24px;
 }
 
 @media (max-width: 768px) { 
-  .question {
+.question {
   width: 90vw;
-  }
-
+}
 }
 
 
@@ -81,47 +90,142 @@ h3 {
   flex-direction: column;
   gap: 1rem;
 }
-@media (max-width: 768px) { 
-  .q-a-dropdown.space-between.split {
-  }
-}
-.card::before{
- height: 70px;
-  color: #4c4c4c;}
 
-.card::after{
-  height: fit-content;
-}
-.card { 
+ul {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 12px 28px 10px 24px;
+  gap: 0.5rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+li {
+  display: inline-flex;
+  flex-wrap: nowrap;
+}
+.marker {
+  color: red;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  font-size: 16px;
+}
+.accordion-button{
+  margin: 0;
+  padding: 0;
+}
+.card1 {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 24px 14px 24px; /* Adjust padding as needed */
   background-color: rgb(255, 255, 255);
   border-radius: 18px;
+  max-height: fit-content;
+}
+
+@media (max-width: 768px) { 
+.card1 {
+  flex: none;
+  border-radius: 16px;
+  justify-content: center;
+  gap: 1rem;
+  max-height: 70px;
+  overflow: hidden;
+  overflow: none; /* Allow vertical scrolling for content exceeding 70px */
+  }
+  .card1.active {
+  max-height: none; /* Allow the card to expand */
+  overflow: none; /* Allow scrolling if content exceeds height */
+  }
+}
+
+
+.card1:hover{
+  .question{font-weight: 600;
+  letter-spacing: 0.2px;}
+  .insurance question{color: #000000;}
+  box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
+}
+
+.card1.active {
+box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
+  .question {
+      font-weight: 600; /* Changed to 800 for bold */
+      letter-spacing: 0.2px;
+    }
+    .answer{
+      color: #4c4c4c;
+      letter-spacing: 0.2px;
+    }
+}
+
+.q1{
+  display: flex;
+  justify-content: center;
   align-items: center;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) { 
+.question{
+
+}
+}
+
+
+.card1.active .answer {
+  height: auto;
+  max-height: fit-content; /* Adjust the height as needed */
+  overflow: hidden;
+  max-height: fit-content; /* Maintain max-height transition */
+  transition: max-height 0.6s ease-out; /* Only max-height transition */
+  padding:  0 1rem;
+}
+
+.answer {
+  font-family: "Ploni ML v2 AAA test", sans-serif;
+  max-height: 0; 
+  font-size: 17px;
+  font-weight: 400;
+  overflow: hidden;
+  line-height: 22px; 
+  text-align: right; /* Right-align the answer text */ 
+  transition: max-height 0.3s ease-in-out; /* Combine opacity and max-height transitions */
+
+}
+
+
+.plus-minus {
+  transition: transform 0.3s ease-in-out;  /* Smooth transition for rotation */
+  /* Initially a horizontal line for minus sign */
+  stroke: #333333; /* Set the stroke color */
+  stroke-width: 2; /* Set the line thickness */
+  stroke-linecap: round; /* Round the ends of the line */
+  stroke-linejoin: round; /* Round the corner where lines meet */
+  /* Important: Set the path to a horizontal line */
+  d: M4 12h16M12 4v16; /* Two lines forming a plus sign */
+  flex: none;
+}
+
+/* Rotate the icon when the card is active (expanded) */
+.card1.active .plus-minus {
+  transform: rotate(-90deg);  
+  stroke-width: 0;
 }
 
 .plus {
   flex: none;
 }
 
-@media (max-width: 768px) { 
-  .card {
-  border-radius: 10px;
-  max-height: 70px;
-  gap: 1rem;
-  }
+.plus-minus{
+  width: 24px; 
+  height: 24px; 
 }
 
 
-
-.card:hover{
-  .question{font-weight: 500;
-  letter-spacing: 0.28px;}
-  p{color: #000000;}
-  box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
-}
 
 
 

@@ -33,14 +33,15 @@ document.addEventListener('click', () => {
     // Play the animation when the mouse is clicked
     animation.play();
 });
-const cards = document.querySelectorAll('.card');
 
-cards.forEach(card => {
-    const plusMinusIcon = card.querySelector('.plus-minus');
-    const answer = card.querySelector('.answer');
+const accordionButtons = document.querySelectorAll('.accordion-button');
 
-    plusMinusIcon.addEventListener('click', () => {
-        card.classList.toggle('active');
-        plusMinusIcon.classList.toggle('rotated');
-    });
+accordionButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const card = button.parentElement; // Get the parent card element
+    card.classList.toggle('active'); // Toggle active state for the clicked card
+
+    // Close other cards using a spread operator for brevity
+    accordionButtons.forEach(otherButton => otherButton !== button && otherButton.parentElement.classList.remove('active'));
+  });
 });
