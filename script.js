@@ -1,3 +1,5 @@
+
+
 // Get the custom cursor element
 const customCursor = document.getElementById('custom-cursor');
 
@@ -39,9 +41,23 @@ const accordionButtons = document.querySelectorAll('.accordion-button');
 accordionButtons.forEach(button => {
   button.addEventListener('click', () => {
     const card = button.parentElement; // Get the parent card element
-    card.classList.toggle('active'); // Toggle active state for the clicked card
+    const plusMinus = card.querySelector('svg.plusx'); // Query plusMinus within the current card
 
-    // Close other cards using a spread operator for brevity
-    accordionButtons.forEach(otherButton => otherButton !== button && otherButton.parentElement.classList.remove('active'));
+    // Toggle active state for the clicked card
+    card.classList.toggle('active');
+
+    // Close other cards
+    for (const otherButton of accordionButtons) {
+      if (otherButton !== button) {
+        otherButton.parentElement.classList.remove('active');
+      }
+    }
+
+    // Toggle the plus/minus icon
+    togglePlusMinus(plusMinus);
   });
 });
+
+function togglePlusMinus(plusMinus) {
+  plusMinus.classList.toggle('minus');
+}
