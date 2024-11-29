@@ -38,26 +38,31 @@ document.addEventListener('click', () => {
 
 const accordionButtons = document.querySelectorAll('.accordion-button');
 
+function togglePlusMinus(plusMinus) {
+  plusMinus.classList.toggle('minus');
+}
+
 accordionButtons.forEach(button => {
   button.addEventListener('click', () => {
     const card = button.parentElement; // Get the parent card element
     const plusMinus = card.querySelector('svg.plusx'); // Query plusMinus within the current card
 
     // Toggle active state for the clicked card
-    card.classList.toggle('active');
+    const isActive = card.classList.toggle('active');
 
     // Close other cards
-    for (const otherButton of accordionButtons) {
+    accordionButtons.forEach(otherButton => {
+      const otherCard = otherButton.parentElement;
       if (otherButton !== button) {
-        otherButton.parentElement.classList.remove('active');
+        otherCard.classList.remove('active');
+        const otherPlusMinus = otherCard.querySelector('svg.plusx');
+        if (otherPlusMinus) {
+          otherPlusMinus.classList.remove('minus'); // Reset other icons
+        }
       }
-    }
+    });
 
-    // Toggle the plus/minus icon
+    // Toggle the plus/minus icon for the clicked card
     togglePlusMinus(plusMinus);
   });
 });
-
-function togglePlusMinus(plusMinus) {
-  plusMinus.classList.toggle('minus');
-}
