@@ -47,14 +47,14 @@ accordionButtons.forEach(button => {
     const card = button.parentElement; // Get the parent card element
     const plusMinus = card.querySelector('svg.plusx'); // Query plusMinus within the current card
 
-    // Toggle active state for the clicked card
-    const isActive = card.classList.toggle('active');
+    // Toggle active state for the clicked card with transition
+    card.classList.toggle('active');
 
     // Close other cards
     accordionButtons.forEach(otherButton => {
       const otherCard = otherButton.parentElement;
       if (otherButton !== button) {
-        otherCard.classList.remove('active');
+        otherCard.classList.remove('active'); // Remove active class with transition
         const otherPlusMinus = otherCard.querySelector('svg.plusx');
         if (otherPlusMinus) {
           otherPlusMinus.classList.remove('minus'); // Reset other icons

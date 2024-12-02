@@ -8,7 +8,8 @@ transition plus-minus
   position: relative;
   width: 2rem;
   height: 2rem;
-  background-color:#ffffff00;
+  background-color:tranparent
+  cursor: pointer;
 
  
 
@@ -38,15 +39,11 @@ transition plus-minus
       margin-top: -2px;
   }
   
-  &:hover{
-      cursor: pointer;
-      
+  &:hover{      
       &:before{ transform: rotate(90deg); }
       &:after{ transform: rotate(180deg); }
   }
 }
-/* end */
-
 
 
 .link {
@@ -168,8 +165,23 @@ li {
   background-color: rgb(255, 255, 255);
   border-radius: 18px;
   max-height: fit-content;
+  overflow: hidden;
+  transition: max-height 800ms ease-out, opacity 800ms ease-out;
 }
 
+.card1.active {
+  transition: max-height 600ms ease-out, opacity 800ms ease-out;
+  box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
+  transform: scaleY(1);
+  transition: max-height 800ms ease-out, opacity 800ms ease-out; /* Add transition properties */
+}
+
+.card1:not (.active){
+  max-height: 0; /* Collapse to zero height */
+  transform: scaleY(0); /* Scale down for smoother animation */
+  transition: max-height 800ms ease-out, opacity 800ms ease-out; /* Add transition properties */
+  opacity: 0;
+}
 
 .card1:hover{
   .question{font-weight: 600;
@@ -178,14 +190,7 @@ li {
   box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
 }
 
-.card1.active {
-box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
-  .question {
-      font-weight: 600; /* Changed to 800 for bold */
-      letter-spacing: 0.2px;}
- }
-
-.q1{
+.q1 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -195,16 +200,31 @@ box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
   height: 70px;
 }
 
-.card1.active .answer {
-  height: auto;
-  max-height: fit-content; /* Adjust the height as needed */
-  overflow: hidden;
-  max-height: fit-content; /* Maintain max-height transition */
-  transition: max-height 0.6s ease-out; /* Only max-height transition */
+.card1 .answer {
   color: #4c4c4c;
+  letter-spacing: 0.2px;
+  overflow: hidden;
+  transition: max-height 0.8s ease-in-out; /* Combined opacity and max-height transitions */
+
+}
+
+.card1.active .question {
+  font-weight: 600; /* Changed to 800 for bold */
   letter-spacing: 0.2px;
 }
 
+.card1.active .answer {
+  transition: max-height 600ms ease-out, opacity 600ms ease-out;
+  height: auto; /* Allow height to be dynamic */
+  max-height: fit-content; /* Adjust the height as needed */
+  opacity: 1; /* Fully visible when active */
+  /* transform: scaleY(1); Start scale for animation */
+}
+
+.card1:not(.active) .answer {
+  max-height: 0; /* Collapse to zero height */
+  opacity: 0; /* Fully hidden when not active */
+}
 .answer {
   font-family: "Ploni ML v2 AAA test", sans-serif;
   max-height: 0; 
@@ -213,11 +233,9 @@ box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
   overflow: hidden;
   line-height: 22px; 
   text-align: right; /* Right-align the answer text */ 
-  transition: max-height 0.3s ease-in-out; /* Combine opacity and max-height transitions */
 }
 
 .plus-minus {
-  /* Initially a horizontal line for minus sign */
   stroke: #333333; /* Set the stroke color */
   stroke-width: 2; /* Set the line thickness */
   stroke-linecap: round; /* Round the ends of the line */
@@ -232,9 +250,7 @@ box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
 /* Rotate the icon when the card is active (expanded) */
 .card1.active .plus-minus {
   stroke-width: 0;
-  d: path("M4 12h16"); /* Initial path (minus sign) */
-  transition: d 0.3s ease-out; /* Smooth transition for path change */
-  transform: rotate(90deg);  
+
 }
 
 .plusx {
@@ -280,6 +296,7 @@ box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
     overflow: none; /* Allow vertical scrolling for content exceeding 70px */
     }
   .card1.active {
+    transition: 600ms;
     max-height: none; /* Allow the card to expand */
     overflow: none; /* Allow scrolling if content exceeds height */
     }
@@ -288,8 +305,8 @@ box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
    }
   }
   
-/* Style for custom cursor */
 
+/* Style for custom cursor */
 
 #custom-cursor {
   position: absolute;
@@ -305,8 +322,7 @@ box-shadow: 10px 30px 40px 5px rgba(142, 150, 159, 0.247);
 }}
 @media (max-width: 768px) { 
   #custom-cursor {
-    width: 75%; /* Adjust width for smaller screens */
+    width: 80%; /* Adjust width for smaller screens */
     height: 70%; /* Adjust height for smaller screens */
   }
 }
-
